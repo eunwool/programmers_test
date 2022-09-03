@@ -32,4 +32,16 @@ def solution(phone_number):
     b = phone_number[a-4:]
     return ('*' * (a - 4)) + b
 
-#
+# 하샤드 수
+'https://school.programmers.co.kr/learn/courses/30/lessons/12947'
+def solution(n):
+    a = list(map(int, str(n)))
+    return True if n % sum(a) == 0 else False
+
+# 평균 구하기
+'https://school.programmers.co.kr/learn/courses/30/lessons/12944'
+def solution(arr):
+    return sum(arr) / len(arr)
+
+# 콜라츠 추측
+'https://school.programmers.co.kr/learn/courses/30/lessons/12943'
