@@ -158,3 +158,220 @@ def solution(s):
             a -= 1
     if a != 0: result = False
     return result
+
+# 두 정수 사이의 합
+'https://school.programmers.co.kr/learn/courses/30/lessons/12912'
+def solution(a, b):
+    if a > b:
+        arr = [i for i in range(b, a + 1)]
+    else:
+        arr = [i for i in range(a, b + 1)]    
+    return sum(arr)
+
+# 나누어 떨어지는 숫자 배열
+'https://school.programmers.co.kr/learn/courses/30/lessons/12910'
+def solution(arr, divisor):
+    result = []
+    for i in arr:
+        if i % divisor == 0: result.append(i)
+    return sorted(result) if len(result) != 0 else [-1]
+
+# 가운데 글자 가져오기
+'https://school.programmers.co.kr/learn/courses/30/lessons/12903'
+def solution(s):
+    a = len(s)
+    if a % 2 == 0:
+        b = round(a / 2)
+        return s[b - 1] + s[b]
+    elif a % 2 == 1:
+        return s[a // 2]
+
+# 부족한 금액 계산하기
+'https://school.programmers.co.kr/learn/courses/30/lessons/82612'
+def solution(price, money, count):
+    answer = [price * i for i in range(1, count + 1)]
+    return 0 if money > sum(answer) else sum(answer) - money
+
+# 나머지가 1이 되는 수 찾기
+'https://school.programmers.co.kr/learn/courses/30/lessons/87389'
+def solution(n):
+    i = 1
+    while True:
+        if n % i == 1:
+            break
+        else : i += 1
+    answer = i
+    return answer
+
+# 2016년
+'https://school.programmers.co.kr/learn/courses/30/lessons/12901'
+def solution(a, b):
+    mon_data = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
+    day = 0
+    for i in range(a - 1):
+        day += mon_data[i]
+    day += b
+    # 1월 1일이 금요일
+    day -= 4
+    return days[day % 7]
+
+# 두개 뽑아서 더하기
+'https://school.programmers.co.kr/learn/courses/30/lessons/68644'
+def solution(numbers):
+    answer = []
+    for i in range(len(numbers)-1):
+        for j in range(i+1, len(numbers)):
+            answer.append(numbers[i] + numbers[j])
+    answer = set(answer)
+    answer = list(answer)
+    return sorted(answer)
+
+# 예산
+'https://school.programmers.co.kr/learn/courses/30/lessons/12982'
+def solution(d, budget):
+    answer = 0 ; sum = 0
+    d.sort()
+    for i in d:
+        if answer + i <= budget:
+            answer += i
+            sum += 1
+    return sum
+
+# 약수의 개수와 덧셈
+'https://school.programmers.co.kr/learn/courses/30/lessons/77884'
+def solution(left, right):
+    a = [i for i in range(left, right + 1)]
+    b = []
+    answer = 0
+    for i in a:
+        for j in range(1, i + 1):
+            if i % j == 0:
+                b.append(j)
+
+        if len(b) % 2 == 0:
+            answer += i
+        elif len(b) % 2 == 1:
+            answer -= i        
+        b = []
+    return answer
+
+# 모의고사
+'https://school.programmers.co.kr/learn/courses/30/lessons/42840'
+def solution(answers):
+    user_1 = [1, 2, 3, 4, 5]
+    user_2 = [2, 1, 2, 3, 2, 4, 2, 5]
+    user_3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+
+    if len(answers) > len(user_1):
+        user_1 = user_1 * ((len(answers) // len(user_1)) + 1)
+        user_1 = user_1[:len(answers)]
+    if len(answers) > len(user_2):
+        user_2 = user_2 * ((len(answers) // len(user_2)) + 1)
+        user_2 = user_2[:len(answers)]
+    if len(answers) > len(user_3):
+        user_3 = user_3 * ((len(answers) // len(user_3)) + 1)
+        user_3 = user_3[:len(answers)]
+    
+    a, b, c = 0, 0, 0
+    for i in range(len(answers)):
+        if answers[i] == user_1[i]:
+            a += 1
+        if answers[i] == user_2[i]:
+            b += 1
+        if answers[i] == user_3[i]:
+            c += 1
+
+    max_num = max(a, b, c)
+    arr = [i for i in (a, b, c)]
+    result = []
+    for i in range(len(arr)):
+        if arr[i] == max_num:
+            result.append(i+1)
+    return result
+
+# k번째수
+'https://school.programmers.co.kr/learn/courses/30/lessons/42748'
+def solution(array, commands):
+    arr = [] ; arr1 = []
+    for i in range(len(commands)):
+        a = commands[i][0]
+        b = commands[i][1]
+        c = commands[i][2]
+        for j in range(a - 1, b):
+            arr.append(array[j])
+        arr.sort()
+        print(arr)
+        arr1.append(arr[c - 1])
+        arr = []
+    return arr1
+
+# 내적
+'https://school.programmers.co.kr/learn/courses/30/lessons/70128'
+def solution(a, b):
+    arr = []
+    for i in range(len(a)):
+        arr.append(a[i] * b[i])
+    return sum(arr)
+
+# 음양 더하기
+'https://school.programmers.co.kr/learn/courses/30/lessons/76501'
+def solution(absolutes, signs):
+    answer = 0
+    for i in range(len(absolutes)):
+        if signs[i] == True:
+            answer += absolutes[i]
+        else:
+            answer -= absolutes[i]
+    return answer
+
+# 없는 숫자 더하기
+'https://school.programmers.co.kr/learn/courses/30/lessons/86051'
+def solution(numbers):
+    answer = -1
+    answer = answer + 1
+    for i in range(1, 10):
+        if i not in numbers:
+            answer += i
+    return answer
+
+# 숫자 문자열과 영단어
+'https://school.programmers.co.kr/learn/courses/30/lessons/81301'
+def solution(s):
+    change_num = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    s = list(s)
+    result = ''
+    arr = ''
+    for i in s:
+        if i.isdigit() == True:
+            result = result + i
+        elif i.isdigit() == False:
+            arr += i
+        if arr in change_num:
+            result += str(change_num.index(arr))
+            arr = ''
+    return int(result)
+
+# 최소직사각형
+'https://school.programmers.co.kr/learn/courses/30/lessons/86491'
+def solution(sizes):
+    for i in sizes:
+        if i[0] < i[1]:
+            i[0], i[1] = i[1], i[0]
+    a = [] ; tep = 0 ; tep1 = 0
+    for i in sizes:
+        if i[0] > tep: tep = i[0]
+        if i[1] > tep1: tep1 = i[1]
+    return tep * tep1
+
+# 같은 숫자는 싫어
+'https://school.programmers.co.kr/learn/courses/30/lessons/12906'
+def solution(arr):
+    a = []
+    for i in range(len(arr) - 1):
+        if arr[i] != arr[i + 1]:
+            a.append(arr[i])
+    a.append(arr[len(arr)-1])
+    return a
+
+# 
