@@ -468,12 +468,7 @@ def solution(strings, n):
     for i in range(len(strings)):
         result[arr_index[i]] = strings[i]
     return result 
-    
-    
-        
-    
-
-
 strings = ['abce', 'abcd', 'cdx']
 n = 2
 print(solution(strings, n))
+# #
