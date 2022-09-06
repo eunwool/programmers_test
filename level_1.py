@@ -494,7 +494,48 @@
 
 # # 최대공약수와 최소공배수
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/12940'
-def solution(n, m):
-    pass
-n = 3 ; m = 12
-print
+# def solution(n, m):
+#     a = n ;b = m
+#     if n > m:
+#         n, m = m, n
+#     while m % n:
+#         r = m % n
+#         m = n
+#         n = r
+#     return [n, int(a * b / n)]
+
+# # 2019 카카오 개발자 겨울인턴쉽 크레인 인형뽑기 게임
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/64061'
+def solution(board, moves):
+    result = [] ; count = 0
+    for i in moves:
+        a = 0
+        while True:
+            if board[a][i - 1] == 0:
+                a += 1
+            else:
+                result.append(board[a][i - 1])
+                board[a][i - 1] = 0
+                break
+
+            if a == 5: break
+    print(result)
+    i = 0
+    for j in range(len(result)):
+        arr = []
+        for i in range(len(result) - 1):
+            if result[i] == result[i + 1]:
+                arr.append(i)
+                arr.append(i + 1)
+        if len(arr) != 0:
+            for i in arr:
+                result.pop(i)
+                count += 2
+
+
+    return count
+            
+        
+board = [[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]
+moves = [1,5,3,5,1,2,1,4]
+print(solution(board, moves))
