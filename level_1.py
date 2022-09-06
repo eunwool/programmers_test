@@ -459,19 +459,42 @@
 
 # # 2018 KAKAO BLIND RECRULTMENT [1차] 다트게임
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/17682'
-def solution(dartResult):
-    arr = [0 for i in range(3)]
-    a = 0
-    for i in dartResult:
-        if i.isdigit() == True:
-            pass
-        else:
-            if i == 'S': pass
-            if i == 'D': pass
-            if i == 'T': pass
-            if i == 'S': pass
-            if i == 'S': pass
+# def solution(dartResult):
+#     arr = [0 for i in range(3)]
+#     total = [0 for i in range(3)]
+#     count = [] 
+#     a = -1 ; b = ''
+#     for i in dartResult:
+#         if i.isdigit() == True:
+#             a += 1
+#             b += i
+#         else:
+#             if i == 'S': count.append(int(b))
+#             if i == 'D': count.append(int(b) * int(b))
+#             if i == 'T': count.append(int(b) * int(b) * int(b))
+#             if i == '*': arr[a] = i
+#             if i == '#': arr[a] = i
+#             b = ''
+#     print(count)
+#     print(arr)
+#     for i in range(3):
+#         if i == 0:
+#             if arr[i] == 0:
+#                 total[i] = count[0]
+#             elif arr[i] == '*':
+#                 total[i] = count[0] * 2
+#             elif arr[i] == '#': total[i] = count[0] * -1
+#         else:
+#             if arr[i] == '*':
+#                 total[i-1] = total[i-1] * 2
+#                 total[i] = count[i] * 2
+#             elif arr[i] == '#': total[i] = count[i] * -1
+#             else: total[i] = count[i]
+#     return sum(total)
 
-
-dartResult = '1S2D*3T'
-print(solution(dartResult))
+# # 최대공약수와 최소공배수
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/12940'
+def solution(n, m):
+    pass
+n = 3 ; m = 12
+print
