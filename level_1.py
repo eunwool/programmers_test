@@ -506,36 +506,58 @@
 
 # # 2019 카카오 개발자 겨울인턴쉽 크레인 인형뽑기 게임
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/64061'
-def solution(board, moves):
-    result = [] ; count = 0
-    for i in moves:
-        a = 0
-        while True:
-            if board[a][i - 1] == 0:
-                a += 1
-            else:
-                result.append(board[a][i - 1])
-                board[a][i - 1] = 0
-                break
+# def solution(board, moves):
+#     result = [] ; count = 0
+#     for i in moves:
+#         a = 0
+#         while True:
+#             if board[a][i - 1] == 0:
+#                 a += 1
+#             else:
+#                 result.append(board[a][i - 1])
+#                 board[a][i - 1] = 0
+#                 break
 
-            if a == 5: break
-    print(result)
-    i = 0
-    for j in range(len(result)):
-        arr = []
-        for i in range(len(result) - 1):
-            if result[i] == result[i + 1]:
-                arr.append(i)
-                arr.append(i + 1)
-        if len(arr) != 0:
-            for i in arr:
-                result.pop(i)
-                count += 2
+#             if a == len(board): break
+#     print(result)
+#     a = len(result) // 2 ; b = []
+#     for i in range(a):
+#         for j in range(len(result) - 1):
+#             if result[j] == result[j + 1]:
+#                 b.append(j)
+#                 b.append(j + 1)
+#         b.sort(reverse=True)
+#         for k in b:
+#             result.pop(k)
+#             count += 1
+#         print(result)
+#         b = []
+#     return count
 
+# # 로또의 최고 순위와 취저 순위
+# # 2021 Dev-Matiching 웹 백엔드 개발자(상반기)
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/77484'
+# def solution(lottos, win_ums):
+#     count = 0 ; zero_count = 0 ; rank = []
+#     for i in lottos:
+#         if i == 0: zero_count += 1
+#         if i in win_nums: count += 1
+#     if count == 0:
+#         rank.append(7 - 1)
+#         if zero_count == 0:
+#             rank.append(7 - (count + zero_count + 1))
+#         else: rank.append(7 - (count + zero_count))
+#     else: rank.append(7 - count) ; rank.append(7 - (count + zero_count))
+#     rank.sort()
+#     return rank
 
-    return count
-            
-        
-board = [[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]
-moves = [1,5,3,5,1,2,1,4]
-print(solution(board, moves))
+# # 완주하지 못한 선수
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/42576'
+# def solution(participant, completion):
+#     for i in completion:
+#         if i in participant: participant.remove(i)
+#     return '"' + participant[0] + '"'
+
+# participant = ['leo', 'kiki', 'eden']
+# completion = ['eden', 'kiki']
+# print(solution(participant, completion))
