@@ -561,3 +561,52 @@
 # participant = ['leo', 'kiki', 'eden']
 # completion = ['eden', 'kiki']
 # print(solution(participant, completion))
+
+# # 소수 만들기
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/12977'
+# def solution(nums):
+#     sum_arr = [] ; count = 0
+#     for i in range(len(nums) - 2):
+#         for j in range(i + 1, len(nums) - 1):
+#             for k in range(j + 1, len(nums)):
+#                 sum_arr.append(nums[i] + nums[j] + nums[k])
+#     for i in sum_arr:
+#         a = 0
+#         for j in range(2, i):
+#             if i % j == 0: a = 0 ;break
+#             else: a = 1 
+#         if a == 1: count += 1
+#     return count
+
+# # 2019 KAKAO BLIND RECRULTMENT 실패율
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/42889'
+# def solution(N, stages):
+#     # 주어진 실패율 : 스테이지에 도달했으나 클리어 못한 플레이어 수 / 스테이지에 도달한 플레이어 수
+#     result = [] ; a = []
+#     for i in range(N):
+#         count = 0 ; b = 0
+#         for j in stages:
+#             if j >= i + 1:
+#                 b += 1
+#                 if (i + 1) - j >= 0: count += 1
+#                 else: pass
+#         result.append(count / b)
+#         print(f'{count} / {b}')
+#     for i in range(N):
+        
+#     return result
+
+# N = 5
+# stages = [2, 1, 2, 6, 2, 4, 3, 3]
+# print(solution(N, stages))
+
+# # 2021 KAKAO BLIND RECRULTMENT 신규 아이디 추천
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/72410'
+def solution(new_id):
+    result = ''
+    for i in new_id:
+        if i.isalpha() == True: result += i.lower()
+        if 
+
+new_id = "...!@BaT#*..y.abcdefghijklm"
+print(solution(new_id))
