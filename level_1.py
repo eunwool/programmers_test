@@ -602,11 +602,55 @@
 
 # # 2021 KAKAO BLIND RECRULTMENT 신규 아이디 추천
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/72410'
-def solution(new_id):
+# 단계별로 풀이함
+# 1단계 new_id의 모든 대문자를 대응되는 소문자로 치환합니다.
+def step_1(new_id):
     result = ''
     for i in new_id:
         if i.isalpha() == True: result += i.lower()
-        if 
-
+        else: result += i
+    return result 
+# 2단계 new_id에서 알파벳 소문자, 숫자, 빼기(-), 밑줄(_), 마침표(.)를 제외한 모든 문자를 제거합니다.
+def step_2(new_id):
+    result = '' ; option = ['-', '_', '.']
+    for i in new_id:
+        if i.isalpha() == True or i.isdigit() == True or i in option:
+            result += i
+    return result     
+# 3단계 new_id에서 마침표(.)가 2번 이상 연속된 부분을 하나의 마침표(.)로 치환합니다.
+def step_3(new_id):
+    pass
+    
+# 4단계 new_id에서 마침표(.)가 처음이나 끝에 위치한다면 제거합니다.
+def step_4(new_id):
+    result = ''
+    for i in range(len(new_id)):
+        if i == 0 or i == len(new_id) - 1:
+            if new_id[i] == '.': pass
+            else: result += new_id[i]
+        else: result += new_id[i]
+    return result
+# 5단계 new_id가 빈 문자열이라면, new_id에 "a"를 대입합니다.
+def step_5(new_id):
+    return "a" if len(new_id) == 0 else new_id
+# 6단계 new_id의 길이가 16자 이상이면, new_id의 첫 15개의 문자를 제외한 나머지 문자들을 모두 제거합니다.
+# 만약 제거 후 마침표(.)가 new_id의 끝에 위치한다면 끝에 위치한 마침표(.) 문자를 제거합니다.
+def step_6(new_id):
+    if len(new_id) >= 16:
+        result = new_id[:16]
+        return step_4(result)
+    else: return new_id
+# 7단계 new_id의 길이가 2자 이하라면, new_id의 마지막 문자를 new_id의 길이가 3이 될 때까지 반복해서 끝에 붙입니다.
+def step_7(new_id):
+    if len(new_id) <= 2:
+        a = len(new_id)
+        while True:
+            new_id += new_id[a - 1]
+            if len(new_id) == 3: break
+        return new_id
+    else: return new_id
+# 최종풀이
+def solution(new_id):
+    return step_7(step_6(step_5(step_4(step_3(step_2(step_1(new_id)))))))
 new_id = "...!@BaT#*..y.abcdefghijklm"
-print(solution(new_id))
+print(step_3(new_id))
