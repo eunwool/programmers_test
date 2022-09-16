@@ -602,8 +602,8 @@ print(solution(N, stages))
 
 # 2021 KAKAO BLIND RECRULTMENT 신규 아이디 추천
 'https://school.programmers.co.kr/learn/courses/30/lessons/72410'
-단계별로 풀이함
-1단계 new_id의 모든 대문자를 대응되는 소문자로 치환합니다.
+# 단계별로 풀이함
+# 1단계 new_id의 모든 대문자를 대응되는 소문자로 치환합니다.
 def step_1(new_id):
     result = ''
     for i in new_id:
@@ -660,12 +660,12 @@ def solution(new_id):
 new_id = "...!@BaT#*..y.abcdefghijklm"
 print(solution(new_id))
 
-# 신고 결과 받기
-'https://school.programmers.co.kr/learn/courses/30/lessons/92334'
-def solution(id_list, report, k):
-    report = list(set(report))
-    print(report)
-id_list = ["muzi", "frodo", "apeach", "neo"]
-report = ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]
-k = 2
-print(solution(id_list, report, k))
+# # 신고 결과 받기
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/92334'
+# def solution(id_list, report, k):
+#     report = list(set(report))
+#     print(report)
+# id_list = ["muzi", "frodo", "apeach", "neo"]
+# report = ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]
+# k = 2
+# print(solution(id_list, report, k))
