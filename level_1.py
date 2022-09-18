@@ -580,25 +580,35 @@
 
 # # 2019 KAKAO BLIND RECRULTMENT 실패율
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/42889'
-# def solution(N, stages):
-#     # 주어진 실패율 : 스테이지에 도달했으나 클리어 못한 플레이어 수 / 스테이지에 도달한 플레이어 수
-#     result = [] ; a = []
-#     for i in range(N):
-#         count = 0 ; b = 0
-#         for j in stages:
-#             if j >= i + 1:
-#                 b += 1
-#                 if (i + 1) - j >= 0: count += 1
-#                 else: pass
-#         result.append(count / b)
-#         print(f'{count} / {b}')
-#     for i in range(N):
-        
-#     return result
-
-# N = 5
-# stages = [2, 1, 2, 6, 2, 4, 3, 3]
-# print(solution(N, stages))
+def solution(N, stages):
+    # 주어진 실패율 : 스테이지에 도달했으나 클리어 못한 플레이어 수 / 스테이지에 도달한 플레이어 수
+    result = [] ; a = []
+    for i in range(N):
+        count = 0 ; b = 0
+        for j in stages:
+            if j >= i + 1:
+                b += 1
+                if (i + 1) - j >= 0: count += 1
+                else: pass
+        result.append(count / b)
+        print(f'{count} / {b}')
+    print(result)
+    
+    for i in range(5):
+        count = 0
+        for j in range(5):
+            if i == j: pass
+            else:
+                if result[i] > result[j]: count += 1
+                elif result[i] == result[j]:
+                    if i > j: count += 1
+                    else: count -= 1
+                else: pass
+        a.append(count)
+    return a
+N = 5
+stages = [2, 1, 2, 6, 2, 4, 3, 3]
+print(solution(N, stages))
 
 # # 2021 KAKAO BLIND RECRULTMENT 신규 아이디 추천
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/72410'
