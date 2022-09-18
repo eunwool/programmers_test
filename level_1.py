@@ -580,35 +580,35 @@
 
 # # 2019 KAKAO BLIND RECRULTMENT 실패율
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/42889'
-def solution(N, stages):
-    # 주어진 실패율 : 스테이지에 도달했으나 클리어 못한 플레이어 수 / 스테이지에 도달한 플레이어 수
-    result = [] ; a = []
-    for i in range(N):
-        count = 0 ; b = 0
-        for j in stages:
-            if j >= i + 1:
-                b += 1
-                if (i + 1) - j >= 0: count += 1
-                else: pass
-        result.append(count / b)
-        print(f'{count} / {b}')
-    print(result)
+# def solution(N, stages):
+#     # 주어진 실패율 : 스테이지에 도달했으나 클리어 못한 플레이어 수 / 스테이지에 도달한 플레이어 수
+#     result = [] ; a = []
+#     for i in range(N):
+#         count = 0 ; b = 0
+#         for j in stages:
+#             if j >= i + 1:
+#                 b += 1
+#                 if (i + 1) - j >= 0: count += 1
+#                 else: pass
+#         result.append(count / b)
+#         print(f'{count} / {b}')
+#     print(result)
     
-    for i in range(5):
-        count = 0
-        for j in range(5):
-            if i == j: pass
-            else:
-                if result[i] > result[j]: count += 1
-                elif result[i] == result[j]:
-                    if i > j: count += 1
-                    else: count -= 1
-                else: pass
-        a.append(count)
-    return a
-N = 5
-stages = [2, 1, 2, 6, 2, 4, 3, 3]
-print(solution(N, stages))
+#     for i in range(5):
+#         count = 0
+#         for j in range(5):
+#             if i == j: pass
+#             else:
+#                 if result[i] > result[j]: count += 1
+#                 elif result[i] == result[j]:
+#                     if i > j: count += 1
+#                     else: count -= 1
+#                 else: pass
+#         a.append(count)
+#     return a
+# N = 5
+# stages = [2, 1, 2, 6, 2, 4, 3, 3]
+# print(solution(N, stages))
 
 # # 2021 KAKAO BLIND RECRULTMENT 신규 아이디 추천
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/72410'
@@ -679,3 +679,50 @@ print(solution(N, stages))
 # report = ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]
 # k = 2
 # print(solution(id_list, report, k))
+
+# # 비밀지도
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/17681'
+# def solution(n, arr1, arr2):
+#     arr = [[0 for i in range(n)] for j in range(n)] ; a = 0 ; result = []
+#     for i in arr1:
+#         b = '' ; b += bin(i)[2:]
+#         if len(b) != n: b = (n - len(b)) * '0' + b
+#         for j in range(n):
+#             arr[a][j] = (b[j])
+#         a += 1
+#     a = 0
+#     for i in arr2:
+#         b = '' ; b += bin(i)[2:]
+#         if len(b) != n: b = (n - len(b)) * '0' + b
+#         for j in range(n):
+#             if b[j] != '0': arr[a][j] = '1'
+#         a += 1
+#     for i in arr:
+#         b = ''
+#         for j in range(n):
+#             if i[j] == '1': b += '#'
+#             else: b += ' '
+#         result.append(b)
+#     return result
+
+# # 체육복
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/42862'
+def solution(n, lost, reserve):
+    arr = [1 for i in range(n)] ; count = 0
+    for i in lost: arr[i - 1] = 0
+    for i in reserve: arr[i - 1] += 1
+    print(arr)
+    for i in range(n - 1):
+        for j in range(i + 1, i + 2):
+            if arr[i] != 0 and arr[j] == 0: 
+                arr[i] -= 1 ; arr[j] += 1
+    arr.sort(reverse=True)
+    for i in range(n - 1):
+        for j in range(i + 1, i + 2):
+            if arr[i] != 0 and arr[j] == 0: 
+                arr[i] -= 1 ; arr[j] += 1
+    for i in arr:
+        if i >= 1: count += 1
+    return count
+n = 5 ; lost = [1, 3] ; reserve = [2, 4]
+print(solution(n, lost, reserve))
