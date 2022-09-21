@@ -708,30 +708,33 @@
 # # 체육복
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/42862'
 def solution(n, lost, reserve):
-    arr = [1 for i in range(n)] ; count = 0
+    arr = [1 for i in range(n)] ; count = 0 ; count1 = 0
     for i in lost: arr[i - 1] = 0
     for i in reserve: arr[i - 1] += 1
     print(arr)
-    # for i in range(n - 1):
-    #     for j in range(i + 1, i + 2):
-    #         if arr[i] != 0 and arr[j] == 0: 
-    #             arr[i] -= 1 ; arr[j] += 1
-    # arr.sort(reverse=True)
-    # for i in range(n - 1):
-    #     for j in range(i + 1, i + 2):
-    #         if arr[i] != 0 and arr[j] == 0: 
-    #             arr[i] -= 1 ; arr[j] += 1
+    arr1 = arr
     for i in range(n - 1):
         for j in range(i + 1, i + 2):
-            if arr[i] == 0 and arr[j] > 1:
-                arr[i] += 1 ; arr[j] -= 1
+            if arr[i] != 0 and arr[j] == 0: 
+                arr[i] -= 1 ; arr[j] += 1
     arr.sort(reverse=True)
     for i in range(n - 1):
         for j in range(i + 1, i + 2):
-            if arr[i] == 0 and arr[j] > 1:
-                arr[i] += 1 ; arr[j] -= 1
-    for i in arr:
-        if i >= 1: count += 1
-    return count
+            if arr[i] != 0 and arr[j] == 0: 
+                arr[i] -= 1 ; arr[j] += 1
+    for i in range(n - 1):
+        for j in range(i + 1, i + 2):
+            if arr1[i] == 0 and arr1[j] > 1:
+                arr1[i] += 1 ; arr1[j] -= 1
+    arr1.sort(reverse=True)
+    for i in range(n - 1):
+        for j in range(i + 1, i + 2):
+            if arr1[i] == 0 and arr1[j] > 1:
+                arr1[i] += 1 ; arr1[j] -= 1
+    for i in range(n):
+        if arr[i] >= 1: count += 1
+        if arr1[i] >= 1: count1 += 1
+    print(f'{arr}, {arr1}')
+    return count if count >= count1 else count1
 n = 5 ; lost = [1, 3] ; reserve = [2, 4]
 print(solution(n, lost, reserve))
