@@ -65,9 +65,21 @@
 
 # # 행렬의 곱셈
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/12949'
-def solution(arr1, arr2):
-    return arr1 * arr2
+# def solution(arr1, arr2):
+#     return arr1 * arr2
 
-arr1 = [[1, 4], [3, 2], [4, 1]]
-arr2 = [[3, 3], [3, 3]]
-print(solution(arr1, arr2))
+# arr1 = [[1, 4], [3, 2], [4, 1]]
+# arr2 = [[3, 3], [3, 3]]
+# print(solution(arr1, arr2))
+
+# # 가장 큰 수
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/42746'
+def solution(numbers):
+    arr = []
+    for i in numbers:
+        count = 0
+        for j in numbers:
+            if i != j:
+                if 
+numbers = [6, 10, 2]
+print(solution(numbers))
