@@ -75,11 +75,22 @@
 # # 가장 큰 수
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/42746'
 def solution(numbers):
-    arr = []
+    arr = [] ; count_arr = [] ; result = ''
     for i in numbers:
-        count = 0
-        for j in numbers:
+        if i < 10: arr.append(i)
+        if 10 <= i and i < 100: arr.append(i / 10)
+        if 100 <= i and i < 1000: arr.append(i / 100)
+    for i in arr:
+        count = len(arr) - 1
+        for j in arr:
             if i != j:
-                if 
-numbers = [6, 10, 2]
+                if i > j: count -= 1
+        count_arr.append(count)
+    print(count_arr)
+    for i in count_arr:
+        result += str(numbers[i])
+    return result
+
+
+numbers = [3, 30, 34, 5, 9]
 print(solution(numbers))
