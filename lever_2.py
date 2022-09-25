@@ -74,23 +74,72 @@
 
 # # 가장 큰 수
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/42746'
-def solution(numbers):
-    arr = [] ; count_arr = [] ; result = ''
-    for i in numbers:
-        if i < 10: arr.append(i)
-        if 10 <= i and i < 100: arr.append(i / 10)
-        if 100 <= i and i < 1000: arr.append(i / 100)
-    for i in arr:
-        count = len(arr) - 1
-        for j in arr:
-            if i != j:
-                if i > j: count -= 1
-        count_arr.append(count)
-    print(count_arr)
-    for i in count_arr:
-        result += str(numbers[i])
-    return result
+# def solution(numbers):
+#     arr = [] ; count_arr = [] ; result = '' ; a= len(numbers)
+#     arr1 = [0 for i in range(a)]
+#     for i in numbers:
+#         if i < 10: arr.append([i, 0])
+#         if 10 <= i and i < 100: arr.append([i / 10, 1])
+#         if 100 <= i and i < 1000: arr.append([i / 100, 2])
+#     for i in range(len(arr)):
+#         count = len(arr) - 1
+#         for j in range(len(arr)):
+#             if i != j:
+#                 if arr[i][0] > arr[j][0]: count -= 1
+#                 elif arr[i][0] == arr[j][0]:
+#                     if arr[i][1] < arr[j][1]: count -= 1
+#         count_arr.append(count)
+#     count = 0
+#     print(count_arr)
+#     for i in count_arr:
+#         arr1[i] = numbers[count]
+#         count += 1
+#     for i in arr1:
+#         result += str(i)
+#     return result
 
 
-numbers = [3, 30, 34, 5, 9]
-print(solution(numbers))
+# numbers = [3, 30, 34, 5, 9]
+# print(solution(numbers))
+
+# # 수식 최대화 [카카오 인턴]
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/67257'
+def solution(expression):
+    count = 0 ; arr = [] ; count_num = [] ; num = '' ; a = []
+    for i in range(len(expression)):
+        if expression[i] in ['+', '-', '*']:
+            arr.append(expression[i])
+            count_num.append(num)
+            num = ''
+        else: num += expression[i]
+
+        if i == len(expression) - 1: count_num.append(num)
+    
+    while True:
+        if '*' in arr:
+            if arr[count] == '*':
+                a.append(int(count_num[count]) * int(count_num[count + 1]))
+                arr[count] = 0
+                count += 2
+            else: a.append(int(count_num[count])) ; count += 1
+        else: a.append(int(count_num[count])) ; count += 1
+
+        if count == 5: break
+    
+    while True:
+        if 0 in arr:
+            arr.remove(0)
+        else: break
+
+    b = a.index(max(a))
+    if b != 0:
+        if arr[b - 1] == arr[b]: c = 0
+        else: c = 1
+    else:
+        if arr[b] == '+': c = 0
+        else: c = 1
+    
+    print(arr)
+    print(b)
+expression = '100-200*300-500+20'
+print(solution(expression))
