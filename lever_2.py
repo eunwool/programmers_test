@@ -104,42 +104,54 @@
 
 # # 수식 최대화 [카카오 인턴]
 # 'https://school.programmers.co.kr/learn/courses/30/lessons/67257'
-def solution(expression):
-    count = 0 ; arr = [] ; count_num = [] ; num = '' ; a = []
-    for i in range(len(expression)):
-        if expression[i] in ['+', '-', '*']:
-            arr.append(expression[i])
-            count_num.append(num)
-            num = ''
-        else: num += expression[i]
+# def solution(expression):
+#     count = 0 ; arr = [] ; count_num = [] ; num = '' ; a = []
+#     for i in range(len(expression)):
+#         if expression[i] in ['+', '-', '*']:
+#             arr.append(expression[i])
+#             count_num.append(num)
+#             num = ''
+#         else: num += expression[i]
 
-        if i == len(expression) - 1: count_num.append(num)
-    
-    while True:
-        if '*' in arr:
-            if arr[count] == '*':
-                a.append(int(count_num[count]) * int(count_num[count + 1]))
-                arr[count] = 0
-                count += 2
-            else: a.append(int(count_num[count])) ; count += 1
-        else: a.append(int(count_num[count])) ; count += 1
+#         if i == len(expression) - 1: count_num.append(num)
+#     print(arr)
+#     while True:
+#         if '*' in arr:
+#             if arr[count] == '*':
+#                 a.append(int(count_num[count]) * int(count_num[count + 1]))
+#                 arr[count] = 0
+#                 count += 2
+#             else: a.append(int(count_num[count])) ; count += 1
+#         else: a.append(int(count_num[count])) ; count += 1
 
-        if count == 5: break
-    
-    while True:
-        if 0 in arr:
-            arr.remove(0)
-        else: break
+#         if count == 5: break
+#     print(a)
+#     while True:
+#         if 0 in arr:
+#             arr.remove(0)
+#         else: break
 
-    b = a.index(max(a))
-    if b != 0:
-        if arr[b - 1] == arr[b]: c = 0
-        else: c = 1
-    else:
-        if arr[b] == '+': c = 0
-        else: c = 1
+#     b = a.index(max(a))
+#     if b != 0:
+#         if arr[b - 1] == arr[b]: c = 0
+#         else: c = 1
+#     else:
+#         if arr[b] == '+': c = 0
+#         else: c = 1
     
-    print(arr)
-    print(b)
-expression = '100-200*300-500+20'
-print(solution(expression))
+#     print(arr)
+#     print(b)
+# expression = '100-200*300-500+20'
+# print(solution(expression))
+
+# # 최솟값 만들기
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/12941'
+# def solution(A, B):
+#     A.sort() 
+#     B.sort()
+#     result = 0
+#     for i in range(len(A)):
+#         result += (A[i] * B[len(A)- 1 - i])
+#     return result
+
+
