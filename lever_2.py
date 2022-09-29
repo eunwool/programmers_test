@@ -154,4 +154,45 @@
 #         result += (A[i] * B[len(A)- 1 - i])
 #     return result
 
+# # 문자열 압축
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/60057'
+# def solution(s):
+#     count = 0 ; n = 2 ; a = ''
+#     while True:
+        
 
+# s = 'aabbaccc'
+# print(solution(s))
+
+# # 최댓값과 최솟값
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/12939'
+# def solution(s):
+#     return str(min([int(i) for i in s.split(' ')])) + ' ' + str(max([int(i) for i in s.split(' ')]))
+
+# # 주차 요금 계산
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/92341'
+def solution(fees, records):
+    a = [] ; result = 0
+    for i in records:
+        b = []
+        time = (int(i[:2]) * 60) + (int(i[3:5]))
+        car_num = i[6:10]
+        if i[11:] == 'IN':
+            a.append([time, car_num])
+        else:
+            for j in a:
+                if j[1] == car_num:
+                    if j[0] - time <= fees[0]: 
+                        result += fees[1]
+                        a.remove(j)
+                    else: 
+                        result += ((((j[0] - time - fees[0]) / fees[2]) * fees[3]) + fees[1])
+                        a.remove(j)
+    if len(a) != 0:
+        for i in a:
+            result += (((((((60 * 24) - 1) - i[0]) - fees[0]) / fees[2]) * fees[3]) + fees[1])
+    return result
+fees = [180, 5000, 10, 600]
+records = ["05:34 5961 IN", "06:00 0000 IN", "06:34 0000 OUT", "07:59 5961 OUT",
+ "07:59 0148 IN", "18:59 0000 IN", "19:09 0148 OUT", "22:59 5961 IN", "23:00 5961 OUT"]
+print(solution(fees, records))
