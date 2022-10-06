@@ -169,29 +169,81 @@
 # def solution(s):
 #     return str(min([int(i) for i in s.split(' ')])) + ' ' + str(max([int(i) for i in s.split(' ')]))
 
-# # 주차 요금 계산
-# 'https://school.programmers.co.kr/learn/courses/30/lessons/92341'
+# # JadenCase 문자열 만들기
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/12951'
+# def solution(s):
+#     a = 0 ; result = ''
+#     for i in s:
+#         if a == 0:
+#             if i.isalpha(): result += i.upper() ; a += 1
+#             else: result += i ; a += 1
+#         else: result += i.lower()
+
+#         if i == ' ': a = 0
+#     return result
+
+# # 짝지어 제거하기
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/12973'
+# def solution(s):
+#     s = list(s)
+#     count = 0 ; a = 0 ; b = '' ; c = []
+#     if len(s) % 2 == 1: return 0
+#     else:
+#         while a < (len(s) / 2):
+#             count = 0 ; b = '' ; c = 0
+#             while count < len(s):
+#                 if b == s[count]:
+#                     c.append(count)
+#                     break
+#                 else: b = s[count]    
+#                 count += 1
+#             print(s)
+#             if c != 0:
+#                 del s[c - 1]
+#                 del s[c - 1]
+#             a += 1
+            
+#         if len(s) != 0: return 0
+#         else: return 1
+# s = 'cdcd'
+# print(solution(s))
+
+# 주차 요금 계산
+#'https://school.programmers.co.kr/learn/courses/30/lessons/92341'
 def solution(fees, records):
-    a = [] ; result = 0
+    report = [] ; result = [] ; result_fee = []
     for i in records:
-        b = []
-        time = (int(i[:2]) * 60) + (int(i[3:5]))
-        car_num = i[6:10]
-        if i[11:] == 'IN':
-            a.append([time, car_num])
-        else:
-            for j in a:
-                if j[1] == car_num:
-                    if j[0] - time <= fees[0]: 
-                        result += fees[1]
-                        a.remove(j)
-                    else: 
-                        result += ((((j[0] - time - fees[0]) / fees[2]) * fees[3]) + fees[1])
-                        a.remove(j)
-    if len(a) != 0:
-        for i in a:
-            result += (((((((60 * 24) - 1) - i[0]) - fees[0]) / fees[2]) * fees[3]) + fees[1])
-    return result
+        time = (int(i[0:2]) * 60) + int(i[3:5])
+        car_number = i[6:11]
+        count = 0 ; time_a = 0 ; fee = 0 ; a = 0
+        for j in report:
+            if j[1] == car_number: count += 1 ; time_a = j[0]
+        if count == 0: report.append([time, car_number])
+        else: 
+            fee += (time - time_a)
+            report.remove([time_a, car_number])        
+            for i in result:
+                if i[1] == car_number: i[0] += fee ; a = 1
+            if a == 0: result.append([fee, car_number])
+    if len(report) != 0:
+        for i in report:
+            fee = 1440 - i[0]
+            car_number = i[1]
+            for j in result:
+                if j[1] == car_number: j[0] += fee
+    result.sort(key=lambda x:x[1])
+    for i in result:
+        count = 0
+        if i[0] > fees[0]: 
+            count += fees[1]
+            count += ((1440 - i[0]) / fees[2]) * fees[3] 
+        else: count = fees[1]
+        result_fee.append(count)
+    return result_fee
+
+
+        
+            
 fees = [180, 5000, 10, 600]
 records = ["05:34 5961 IN", "06:00 0000 IN", "06:34 0000 OUT", "07:59 5961 OUT",
  "07:59 0148 IN", "18:59 0000 IN", "19:09 0148 OUT", "22:59 5961 IN", "23:00 5961 OUT"]
