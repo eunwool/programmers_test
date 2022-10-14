@@ -734,3 +734,36 @@
 #     return count if count >= count1 else count1
 # n = 5 ; lost = [1, 3] ; reserve = [2, 4]
 # print(solution(n, lost, reserve))
+
+# # 삼총사
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/131705'
+# def solution(number):
+#     count = 0
+#     for i in range(len(number) - 2):
+#         for j in range(i + 1, len(number) - 1):
+#             for k in range(j + 1 , len(number)):
+#                 if number[i] + number[j] + number[k] == 0: count += 1
+#     return count
+
+# # 숫자 짝꿍
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/131128'
+def solution(X, Y):
+    result = '' ; count = 0 ; result_1 = '' 
+    if len(X) > len(Y): X, Y = Y, X
+    for i in Y:
+        if i in X: 
+            result += i
+            if i == '0': count += 1
+    if len(result) == 0: count = -1
+    if count == -1: return '-1'
+    elif count == len(result): return '0'
+    else:
+        result = list(result)
+        result.sort(reverse=True)
+        for i in result:
+            result_1 += i
+        return result_1
+        
+X = '100'
+Y = '123450'
+print(solution(X, Y))

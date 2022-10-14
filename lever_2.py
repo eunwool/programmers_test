@@ -210,41 +210,47 @@
 
 # 주차 요금 계산
 #'https://school.programmers.co.kr/learn/courses/30/lessons/92341'
-def solution(fees, records):
-    report = [] ; result = [] ; result_fee = []
-    for i in records:
-        time = (int(i[0:2]) * 60) + int(i[3:5])
-        car_number = i[6:11]
-        count = 0 ; time_a = 0 ; fee = 0 ; a = 0
-        for j in report:
-            if j[1] == car_number: count += 1 ; time_a = j[0]
-        if count == 0: report.append([time, car_number])
-        else: 
-            fee += (time - time_a)
-            report.remove([time_a, car_number])        
-            for i in result:
-                if i[1] == car_number: i[0] += fee ; a = 1
-            if a == 0: result.append([fee, car_number])
-    if len(report) != 0:
-        for i in report:
-            fee = 1440 - i[0]
-            car_number = i[1]
-            for j in result:
-                if j[1] == car_number: j[0] += fee
-    result.sort(key=lambda x:x[1])
-    for i in result:
-        count = 0
-        if i[0] > fees[0]: 
-            count += fees[1]
-            count += ((1440 - i[0]) / fees[2]) * fees[3] 
-        else: count = fees[1]
-        result_fee.append(count)
-    return result_fee
+# import math
+# def solution(fees, records):
+#     report = [] ; result = [] ; result_fee = []
+#     for i in records:
+#         time = (int(i[0:2]) * 60) + int(i[3:5])
+#         car_number = i[6:11]
+#         count = 0 ; time_a = 0 ; fee = 0 ; a = 0
+#         for j in report:
+#             if j[1] == car_number: count += 1 ; time_a = j[0]
+#         if count == 0: report.append([time, car_number])
+#         else: 
+#             fee += (time - time_a)
+#             report.remove([time_a, car_number])        
+#             for i in result:
+#                 if i[1] == car_number: i[0] += fee ; a = 1
+#             if a == 0: result.append([fee, car_number])
+#     if len(report) != 0:
+#         for i in report:
+#             fee = 1439 - i[0]
+#             car_number = i[1]
+#             for j in result:
+#                 if j[1] == car_number: j[0] += fee
+
+#     result.sort(key=lambda x:x[1])
+#     print(result)
+
+#     for i in result:
+#         if i[0] <= fees[0]: result_fee.append(fees[1])
+#         else:
+#             result_fee.append(fees[1] + (math.ceil((i[0] - fees[0]) / fees[2]) * fees[3]))
+#     return result_fee
 
 
         
             
-fees = [180, 5000, 10, 600]
-records = ["05:34 5961 IN", "06:00 0000 IN", "06:34 0000 OUT", "07:59 5961 OUT",
- "07:59 0148 IN", "18:59 0000 IN", "19:09 0148 OUT", "22:59 5961 IN", "23:00 5961 OUT"]
-print(solution(fees, records))
+# fees = [1, 461, 1, 10]
+# records = ["00:00 1234 IN"]
+# print(solution(fees, records))
+
+# # 혼자 놀기의 달인
+# 'https://school.programmers.co.kr/learn/courses/30/lessons/131130'
+def solution(cards):
+    pass
+card = [8,6,3,7,2,5,1,4]
